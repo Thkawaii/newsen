@@ -19,6 +19,15 @@ func SetupRoutes(r *gin.Engine, bookingHandler *handler.BookingHandler, promotio
 	api.POST("/reviews", reviewHandler.CreateReview)
 	api.GET("/reviews", reviewHandler.GetAllReviews)
 	api.GET("/reviews/:id", reviewHandler.GetReviewByID)
+	api.GET("/reviews/driver/:driver_id", reviewHandler.GetReviewsByDriverID)
 	api.PUT("/reviews/:id", reviewHandler.UpdateReview)
 	api.DELETE("/reviews/:id", reviewHandler.DeleteReview)
+
+	//  WebSocket Payment
+	api.POST("/payment-notify", handler.NotifyPaymentClient)
+	r.GET("/ws/payment-notify/:id", handler.WebSocketPaymentHandler)
+	//  WebSocket Review
+	api.POST("/review-notify", handler.NotifyReviewClient)
+	r.GET("/ws/review-notify/:id", handler.WebSocketReviewHandler)
+
 }

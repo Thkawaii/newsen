@@ -534,3 +534,86 @@ h2 {
   position: relative;
   display: inline-block;
 }
+
+.waiting-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.waiting-header h1 {
+  font-size: clamp(2rem, 2vw, 2rem); /* Scales with screen width */
+  color: #8f7ceb;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Comic Sans MS", sans-serif;
+}
+
+.loading08 span {
+  font-size: clamp(4rem, 4vw, 4rem); /* Scales with screen width */
+  position: relative;
+  color: rgba(0, 0, 0, 0.2);
+  animation: loading08-parent 5s infinite;
+}
+
+.loading08 span::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: attr(data-text);
+  color: #8f7ceb;
+  opacity: 0;
+  animation: loading08-child 5s infinite;
+}
+
+.loading08 span:nth-child(1)::after {
+  animation-delay: 0.2s;
+}
+
+.loading08 span:nth-child(2)::after {
+  animation-delay: 0.4s;
+}
+
+.loading08 span:nth-child(3)::after {
+  animation-delay: 0.6s;
+}
+
+.loading08 span:nth-child(4)::after {
+  animation-delay: 0.8s;
+}
+
+.loading08 span:nth-child(5)::after {
+  animation-delay: 1s;
+}
+
+.loading08 span:nth-child(6)::after {
+  animation-delay: 1.2s;
+}
+
+.loading08 span:nth-child(7)::after {
+  animation-delay: 1.4s;
+}
+
+@keyframes loading08-parent {
+  0%,
+  35%,
+  100% {
+    /* color: rgba(0, 0, 0, 0.2); */
+  }
+  60%,
+  80% {
+    color: #fff;
+  }
+}
+
+@keyframes loading08-child {
+  0% {
+    opacity: 1;
+  }
+  25%,
+  100% {
+    opacity: 0;
+  }
+}

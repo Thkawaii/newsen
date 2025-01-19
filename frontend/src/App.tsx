@@ -48,6 +48,7 @@ import DriverTrackingPage from "./pages/DriverBooking/DriverBooking";
 import Driverontheway from "./pages/DriverBooking/DriverBooking";
 import DriverFinish from "./pages/DriverBooking/DriverBooking";
 import Training from "./pages/training/Training.tsx";
+import DashboardDriverReview from "./pages/Dashboard/DashboardDriverReview.tsx";
 
 
 const App: React.FC = () => {
@@ -92,6 +93,7 @@ const App: React.FC = () => {
         <Route path="/payment" element={<Payment/>} /> 
         <Route path="/review/history" element={<History/>} /> 
         <Route path="/edit" element={<Edit/>} /> 
+        <Route path="/dashboard-driver-review" element={<DashboardDriverReview/>} /> 
 
         {/*นนท์ Room and Trainer แก้*/}
         <Route path="/rooms" element={<AdminRoom />} />

@@ -4,6 +4,8 @@ import { getBookingById, finishBooking } from "../../services/https/booking"; //
 import "./DriverOnTheWay.css"; // Reuse the same CSS file
 import mapIcon from "../../assets/map.png";
 import chatIcon from "../../assets/chat.png";
+import { apiRequest } from "../../config/ApiService";
+import { Endpoint } from "../../config/Endpoint";
 
 interface DriverFinishProps {
   bookingId: number; // Accept bookingId as a prop to fetch booking details
@@ -49,6 +51,14 @@ const DriverFinish: React.FC<DriverFinishProps> = ({ bookingId }) => {
 
       if (response.success) {
         alert("✅ Booking finished successfully!");
+
+        // กดจบงานแล้วไปอัปเดตหน้า payment
+        const notifyPayment = {
+          id: String(bookingId),
+          message: "update",
+        };
+        apiRequest("POST", Endpoint.PAYMENT_NOTIFY, notifyPayment);
+
         navigate("/Dashboards"); // Navigate to the Dashboards page
       } else {
         alert(`❌ Failed to finish booking: ${response.message}`);

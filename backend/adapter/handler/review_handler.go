@@ -59,6 +59,38 @@ func (h *ReviewHandler) GetReviewByID(c *gin.Context) {
 	c.JSON(http.StatusOK, review)
 }
 
+func (h *ReviewHandler) GetReviewsByDriverID(c *gin.Context) {
+	driverID, err := strconv.Atoi(c.Param("driver_id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid driver ID"})
+		return
+	}
+
+	reviews, err := h.repo.GetReviewsByDriverID(driverID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	var totalRating, count int
+	for _, review := range reviews {
+		totalRating += review.Rating
+		count++
+	}
+
+	averageRating := 0
+	if count > 0 {
+		averageRating = totalRating / count
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"driver_id":     driverID,
+		"averageRating": averageRating,
+		"totalRatings":  count,
+		"reviews":       reviews,
+	})
+}
+
 func (h *ReviewHandler) UpdateReview(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {

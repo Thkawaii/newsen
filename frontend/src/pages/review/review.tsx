@@ -58,7 +58,7 @@ const Review: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-    if (!bookingId || !passengerId ) {
+    if (!bookingId || !passengerId) {
       alert("Please check the information on the home page first.");
       return;
     }
@@ -125,6 +125,13 @@ const Review: React.FC = () => {
 
       if (response) {
         alert("Review Submitted Successfully!");
+
+        const notifyReview = {
+          id: `${driverId}`,
+          message: "update",
+        };
+        apiRequest("POST", Endpoint.REVIEW_NOTIFY, notifyReview);
+
         navigate("/review/history");
       }
     } catch (error) {
@@ -325,9 +332,7 @@ const Review: React.FC = () => {
             </div>
             <div className="passenger-details">
               <p className="passenger-title">Review BY</p>
-              <p className="passenger-id">
-                Passenger_ID: {passengerId}
-              </p>
+              <p className="passenger-id">Passenger_ID: {passengerId}</p>
             </div>
           </div>
         </div>

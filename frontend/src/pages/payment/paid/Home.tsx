@@ -12,8 +12,6 @@ const HomePayment: React.FC = () => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
-//Good luck
-  // Detail Payment Booking & Promotion Discount
   const [bookingNew, setBookingNew] = useState<BookingInterface | null>(null);
   const [isLoadBooking, setisLoadBooking] = useState(true);
   const [promotionCode, setPromotionCode] = useState("");
@@ -125,36 +123,6 @@ const HomePayment: React.FC = () => {
     });
   };
 
-  // const menuItems = [
-  //   {
-  //     name: "Home",
-  //     icon: "https://cdn-icons-png.flaticon.com/128/18390/18390765.png",
-  //     route: "/paid",
-  //   },
-  //   {
-  //     name: "Payment",
-  //     icon: "https://cdn-icons-png.flaticon.com/128/18209/18209461.png",
-  //     route: "/payment",
-  //   },
-  //   {
-  //     name: "Review",
-  //     icon: "https://cdn-icons-png.flaticon.com/128/7656/7656139.png",
-  //     route: "/review",
-  //   },
-  //   {
-  //     name: "History",
-  //     icon: "https://cdn-icons-png.flaticon.com/128/9485/9485945.png",
-  //     route: "/review/history",
-  //   },
-  // ];
-
-  // const handleMenuClick = (item: {
-  //   name: string;
-  //   icon: string;
-  //   route: string;
-  // }) => {
-  //   navigate(item.route);
-  // };
   const handleMapClick = () => {
     window.open("https://www.google.com/maps", "_blank"); // Replace with actual map URL
   };
@@ -215,22 +183,11 @@ const HomePayment: React.FC = () => {
                     Starting Point:
                   </span>
                   <span>
-                    {
-                      isLoadBooking
-                        ? "Loading..."
-                        : bookingNew == null
-                        ? "None"
-                        : bookingNew?.beginning ?? ""
-                      // booking.length > 0
-                      //   ? booking.map((b, index) => (
-                      //       <span key={index}>
-                      //         {b.beginning} {/* ดึงชื่อสถานที่จาก Beginning */}
-                      //         {index < booking.length - 1 && ", "}
-                      //       </span>
-                      //     ))
-                      //   :
-                      //    "..."
-                    }
+                    {isLoadBooking
+                      ? "Loading..."
+                      : bookingNew == null
+                      ? "None"
+                      : bookingNew?.beginning ?? ""}
                   </span>
                 </div>
                 <div className="row">
@@ -243,21 +200,11 @@ const HomePayment: React.FC = () => {
                     Destination:
                   </span>
                   <span>
-                    {
-                      isLoadBooking
-                        ? "Loading..."
-                        : bookingNew == null
-                        ? "None"
-                        : bookingNew?.terminus ?? ""
-                      // booking.length > 0
-                      //   ? booking.map((b, index) => (
-                      //       <span key={index}>
-                      //         {b.terminus} {/* ดึงชื่อสถานที่จาก Destination */}
-                      //         {index < booking.length - 1 && ", "}
-                      //       </span>
-                      //     ))
-                      //   : "Loading..."
-                    }
+                    {isLoadBooking
+                      ? "Loading..."
+                      : bookingNew == null
+                      ? "None"
+                      : bookingNew?.terminus ?? ""}
                   </span>
                 </div>
                 <div className="row">
@@ -270,21 +217,11 @@ const HomePayment: React.FC = () => {
                     Vehicle Type:
                   </span>
                   <span>
-                    {
-                      isLoadBooking
-                        ? "Loading..."
-                        : bookingNew == null
-                        ? "None"
-                        : bookingNew?.vehicle ?? ""
-                      // booking.length > 0
-                      //   ? booking.map((b, index) => (
-                      //       <span key={index}>
-                      //         {b.vehicle} {/* ดึงข้อมูล Vehicle จาก Booking */}
-                      //         {index < booking.length - 1 && ", "}
-                      //       </span>
-                      //     ))
-                      //   : "Loading..."
-                    }
+                    {isLoadBooking
+                      ? "Loading..."
+                      : bookingNew == null
+                      ? "None"
+                      : bookingNew?.vehicle ?? ""}
                   </span>
                 </div>
                 <div className="row">
@@ -297,14 +234,9 @@ const HomePayment: React.FC = () => {
                     Estimated Cost:
                   </span>
                   <span>
-                    {
-                      isLoadBooking
-                        ? "Loading..."
-                        : formatPrice(bookingNew?.total_price ?? 0)
-                      // booking.length > 0
-                      //   ? parseFloat(booking[0].total_price).toFixed(2)
-                      //   : "Loading..."
-                    }{" "}
+                    {isLoadBooking
+                      ? "Loading..."
+                      : formatPrice(bookingNew?.total_price ?? 0)}{" "}
                     Baht
                   </span>
                 </div>
@@ -418,22 +350,11 @@ const HomePayment: React.FC = () => {
               </p>
               <p className="distance-text">
                 Distance:{" "}
-                {
-                  isLoadBooking
-                    ? "Loading..."
-                    : bookingNew == null
-                    ? "None"
-                    : bookingNew?.distance ?? ""
-                  // booking.length > 0
-                  //   ? booking.map((b, index) => (
-                  //       <span key={index}>
-                  //         {b.distance} KM
-                  //         {index < booking.length - 1 && ", "}{" "}
-                  //         {/* คั่นด้วย , ถ้าไม่ใช่รายการสุดท้าย */}
-                  //       </span>
-                  //     ))
-                  //   : "Loading..."
-                }{" "}
+                {isLoadBooking
+                  ? "Loading..."
+                  : bookingNew == null
+                  ? "None"
+                  : bookingNew?.distance ?? ""}{" "}
                 {bookingNew != null ? <span>KM</span> : ""}
               </p>
               <div className="tgx" onClick={handleMapClick}>

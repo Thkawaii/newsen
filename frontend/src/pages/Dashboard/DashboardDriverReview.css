@@ -1,0 +1,8 @@
+.custom-ant-table .ant-table-thead > tr > th,
+.custom-ant-table .ant-table-tbody > tr > td {
+  font-family: "Comic Sans MS", sans-serif;
+}
+
+.custom-ant-table .ant-table-thead > tr > th {
+  font-weight: bold;
+}

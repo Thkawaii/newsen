@@ -4,6 +4,7 @@ import {
   LogoutOutlined,
   DashboardOutlined,
   FundProjectionScreenOutlined,
+  StarOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { AiOutlineHome } from "react-icons/ai";
@@ -34,6 +35,7 @@ const items: CustomMenuItem[] = [
     icon: <FundProjectionScreenOutlined />,
   },
   { key: "/withdrawal", label: "WITHDRAWAL", icon: <GiftOutlined /> },
+  { key: "/dashboard-driver-review", label: "Review", icon: <StarOutlined /> },
   {
     key: "/",
     label: "Log out",

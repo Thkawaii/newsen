@@ -16,6 +16,8 @@ import OtherCardIcon from "../../assets/OtherCard.png";
 import { apiRequest } from "../../config/ApiService";
 import { Endpoint } from "../../config/Endpoint";
 import { patchBookingStatus } from "../../services/https/statusbooking/statusbooking"; //อัพเดตสถานนะการจ่ายเงิน
+import CircularProgress from "@mui/material/CircularProgress/CircularProgress";
+import { Alert } from "@mui/material";
 
 const Payment: React.FC = () => {
   const [method, setMethod] = useState<string | null>(null);
@@ -30,17 +32,67 @@ const Payment: React.FC = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [wallet, setWallet] = useState<string | null>(null);
   const [error, setError] = useState("");
+  const [waitingDriver, setWaitingDriver] = useState(0);
+  // const [isPaid, setIsPaid] = useState(false); // ติดตามสถานะ paid
+  const [isSubmitting, setIsSubmitting] = useState(false); // เพิ่ม state สำหรับป้องกันการส่งซ้ำ
+  const [notifyPayment, setNotifyPayment] = useState(false);
   const navigate = useNavigate();
 
   const location = useLocation();
   const { paymenyAmount, promotionId, bookingId, driverId, passengerId } =
     location.state || {};
 
-  // ตรวจสอบว่า bookingId มีค่า
+  // WebSocket Waiting Driver
   useEffect(() => {
     if (!bookingId) {
       console.error("Booking ID not found in location.state");
     }
+
+    // WebSocket URL
+    const socket = new WebSocket(
+      `ws://localhost:8080/ws/payment-notify/${bookingId}`
+    );
+
+    socket.onopen = () => {
+      console.log("WebSocket connected");
+    };
+
+    socket.onmessage = (event) => {
+      console.log("Message from WebSocket:", event.data);
+
+      // ไปหน้า Review เมื่อกดสำเร็จงาน
+      if (event.data === "update") {
+        setNotifyPayment(true);
+
+        // แจ้งเตือนขึ้น รอ 19 วิ
+        const notificationTimer = setTimeout(() => {
+          setNotifyPayment(false);
+
+          //  รอ 1 วิ และไปหน้าต่อไป
+          const navigateTimer = setTimeout(() => {
+            navigate("/review", {
+              state: {
+                bookingId: bookingId,
+                driverId: driverId,
+                passengerId: passengerId,
+              },
+            });
+          }, 1000);
+
+          return () => clearTimeout(navigateTimer);
+        }, 19000);
+
+        return () => clearTimeout(notificationTimer);
+      }
+    };
+
+    socket.onclose = () => {
+      console.log("WebSocket disconnected");
+    };
+
+    return () => {
+      socket.close(); // ปิด WebSocket เมื่อ Component ถูก unmount
+    };
   }, [bookingId]);
 
   useEffect(() => {
@@ -95,29 +147,6 @@ const Payment: React.FC = () => {
     }
   };
 
-  // const menuItems = [
-  //   {
-  //     name: "Home",
-  //     icon: "https://cdn-icons-png.flaticon.com/128/18390/18390765.png",
-  //     route: "/paid",
-  //   },
-  //   {
-  //     name: "Payment",
-  //     icon: "https://cdn-icons-png.flaticon.com/128/18209/18209461.png",
-  //     route: "/payment",
-  //   },
-  //   {
-  //     name: "Review",
-  //     icon: "https://cdn-icons-png.flaticon.com/128/7656/7656139.png",
-  //     route: "/review",
-  //   },
-  //   {
-  //     name: "History",
-  //     icon: "https://cdn-icons-png.flaticon.com/128/9485/9485945.png",
-  //     route: "/review/history",
-  //   },
-  // ];
-
   const validateForm = () => {
     const validationErrors: { [key: string]: string } = {};
 
@@ -149,53 +178,6 @@ const Payment: React.FC = () => {
     setErrors(validationErrors);
     return Object.keys(validationErrors).length === 0;
   };
-
-  const [isPaid, setIsPaid] = useState(false); // ติดตามสถานะ paid
-
-  const [isSubmitting, setIsSubmitting] = useState(false); // เพิ่ม state สำหรับป้องกันการส่งซ้ำ
-
-  // ตรวจสอบว่า `bookingId` มีค่า
-  useEffect(() => {
-    if (!bookingId) {
-      console.error("Booking ID not found in location.state");
-    }
-  }, [bookingId]);
-
-  // ฟังก์ชันส่งคำขออัปเดตสถานะ
-  // const handleConfirmebooking = async (): Promise<void> => {
-  //   if (!bookingId) {
-  //     alert("Booking ID is required.");
-  //     return;
-  //   }
-
-  //   // ป้องกันการส่งคำขอซ้ำ
-  //   if (isSubmitting) {
-  //     console.log("Already submitting. Please wait...");
-  //     return;
-  //   }
-
-  //   setIsSubmitting(true); // ตั้งสถานะกำลังส่ง
-
-  //   try {
-  //     // เรียก API เพื่ออัปเดตสถานะเป็น "paid"
-  //     const data = await patchBookingStatus("paid", bookingId);
-
-  //     // ตรวจสอบผลลัพธ์
-  //     if (data.success) {
-  //       console.log("Booking status updated to paid:", data);
-  //       setIsPaid(true); // ตั้งสถานะใน Frontend เป็น "paid"
-  //       alert("Booking status successfully updated to 'paid'!");
-  //     } else {
-  //       console.error("Failed to update booking status:", data.message);
-  //       alert(`Failed to update booking status: ${data.message}`);
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to update booking status:", error);
-  //     alert("Failed to update booking status. Please try again.");
-  //   } finally {
-  //     setIsSubmitting(false); // รีเซ็ตสถานะกำลังส่ง
-  //   }
-  // };
 
   const handleConfirm = async () => {
     try {
@@ -250,7 +232,7 @@ const Payment: React.FC = () => {
 
       if (data.success) {
         console.log("Booking status updated to paid:", data);
-        setIsPaid(true); // ตั้งสถานะใน Frontend เป็น "paid"
+        // setIsPaid(true); // ตั้งสถานะใน Frontend เป็น "paid"
       } else {
         console.error("Failed to update booking status:", data.message);
         //alert(`Failed to update booking status: ${data.message}`);
@@ -258,13 +240,7 @@ const Payment: React.FC = () => {
 
       if (response) {
         alert("Payment successfully!");
-        navigate("/review", {
-          state: {
-            bookingId: bookingId,
-            driverId: driverId,
-            passengerId: passengerId,
-          },
-        });
+        setWaitingDriver(1);
       } else {
         setError("Payment failed. Please try again.");
       }
@@ -280,14 +256,6 @@ const Payment: React.FC = () => {
     }
   };
 
-  // const handleMenuClick = (item: {
-  //   name: string;
-  //   icon: string;
-  //   route: string;
-  // }) => {
-  //   navigate(item.route);
-  // };
-
   const cardTypeIcons = {
     Visa: VisaIcon,
     MasterCard: MasterCardIcon,
@@ -299,278 +267,335 @@ const Payment: React.FC = () => {
     OtherCard: OtherCardIcon,
   };
 
+  function GradientCircularProgress() {
+    return (
+      <React.Fragment>
+        <svg width={0} height={0}>
+          <defs>
+            <linearGradient id="my_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#e01cd5" />
+              <stop offset="100%" stopColor="#1CB5E0" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <CircularProgress
+          size={60} // ขยายขนาด
+          thickness={6} // ปรับความหนา
+          sx={{
+            "svg circle": {
+              stroke: "url(#my_gradient)", // เพิ่ม gradient
+            },
+          }}
+          style={{ marginBottom: "40px" }}
+        />
+      </React.Fragment>
+    );
+  }
+
   return (
     <div className="nn">
-      <div className="payment-container1">
-        <header className="payment-header">
-          {/* <div className="sidebar">
-            {menuItems.map((item) => (
-              <div
-                key={item.name}
-                className="menu-item"
-                onClick={() => handleMenuClick(item)}
-              >
-                <img src={item.icon} alt={item.name} className="menu-icon" />
-                <p className="menu-text">{item.name}</p>
-              </div>
-            ))}
-          </div> */}
-          <h1>PAYMENT</h1>
-          <div className="step-indicators">
-            <div className="step completed"></div>
-            <div className="step active"></div>
-            <div className="step"></div>
+      {waitingDriver == 1 ? (
+        <div className="waiting-container">
+          {notifyPayment ? (
+            <Alert icon={false} severity="success">
+              The journey is complete! Please take a moment to review your
+              experience with us.
+            </Alert>
+          ) : (
+            <></>
+          )}
+          <header className="payment-header">
+            <h1>
+              WAITING
+              <br />
+              FOR DRIVER
+            </h1>
+          </header>
+          <GradientCircularProgress />
+          <div className="loading loading08">
+            <span data-text="L">L</span>
+            <span data-text="O">O</span>
+            <span data-text="A">A</span>
+            <span data-text="D">D</span>
+            <span data-text="I">I</span>
+            <span data-text="N">N</span>
+            <span data-text="G">G</span>
           </div>
-        </header>
-        <div className="payment-options">
-          <div
-            className={`payment-option ${method === "card" ? "selected" : ""}`}
-            onClick={() => setMethod("card")}
-          >
-            <p>Credit/Debit Card</p>
-            <div className="image-row">
+        </div>
+      ) : (
+        <div className="payment-container1">
+          <header className="payment-header">
+            <h1>PAYMENT</h1>
+            <div className="step-indicators">
+              <div className="step completed"></div>
+              <div className="step active"></div>
+              <div className="step"></div>
+            </div>
+          </header>
+          <div className="payment-options">
+            <div
+              className={`payment-option ${
+                method === "card" ? "selected" : ""
+              }`}
+              onClick={() => setMethod("card")}
+            >
+              <p>Credit/Debit Card</p>
+              <div className="image-row">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/128/349/349221.png"
+                  alt="Image 1"
+                  className="image-item"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/128/16174/16174534.png"
+                  alt="Image 2"
+                  className="image-item"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/128/311/311147.png"
+                  alt="Image 3"
+                  className="image-item"
+                />
+              </div>
+            </div>
+            <div
+              className={`payment-option ${
+                method === "wallet" ? "selected" : ""
+              }`}
+              onClick={() => setMethod("wallet")}
+            >
+              <p>Digital Wallet</p>
               <img
-                src="https://cdn-icons-png.flaticon.com/128/349/349221.png"
-                alt="Image 1"
-                className="image-item"
-              />
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/16174/16174534.png"
-                alt="Image 2"
-                className="image-item"
-              />
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/311/311147.png"
-                alt="Image 3"
-                className="image-item"
+                src="https://cdn-icons-png.flaticon.com/128/2335/2335451.png"
+                alt="Digital Wallet"
+                className="payment-option-img"
               />
             </div>
           </div>
-          <div
-            className={`payment-option ${
-              method === "wallet" ? "selected" : ""
-            }`}
-            onClick={() => setMethod("wallet")}
-          >
-            <p>Digital Wallet</p>
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/2335/2335451.png"
-              alt="Digital Wallet"
-              className="payment-option-img"
-            />
+          <div>
+            {error && <div className="error-message">{error}</div>}
+            {/* Wallet Options */}
+            {method === "wallet" && (
+              <div className="wallet-grid">
+                <button
+                  className="wallet-btn"
+                  onClick={() => {
+                    setWallet("truemoney");
+                    setError(""); // Clear error when this wallet is selected
+                  }}
+                >
+                  <img
+                    src="https://play-lh.googleusercontent.com/eOzvk-ekluYaeLuvDkLb5RJ0KqfFQpodZDnppxPfpEfqEqbNo5erEkmwLBgqP-k-e2kQ"
+                    alt="TrueMoney"
+                  />
+                  <span>TrueMoney</span>
+                </button>
+                <button
+                  className="wallet-btn"
+                  onClick={() => {
+                    setWallet("promptpay");
+                    setError(""); // Clear error when this wallet is selected
+                  }}
+                >
+                  <img
+                    src="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png"
+                    alt="PromptPay"
+                  />
+                  <span>PromptPay</span>
+                </button>
+                <button
+                  className="wallet-btn"
+                  onClick={() => {
+                    setWallet("alipay");
+                    setError(""); // Clear error when this wallet is selected
+                  }}
+                >
+                  <img
+                    src="https://cdn.techinasia.com/data/images/c91cff808dad89b1dd21f6f3f433c521.png"
+                    alt="Alipay"
+                  />
+                  <span>Alipay</span>
+                </button>
+                <button
+                  className="wallet-btn"
+                  onClick={() => {
+                    setWallet("linepay");
+                    setError(""); // Clear error when this wallet is selected
+                  }}
+                >
+                  <img
+                    src="https://d.line-scdn.net/linepay/portal/v-241028/portal/assets/img/linepay-logo-jp-gl.png"
+                    alt="Line Pay"
+                  />
+                  <span>Line Pay</span>
+                </button>
+              </div>
+            )}
           </div>
-        </div>
-        <div>
-          {error && <div className="error-message">{error}</div>}
-          {/* Wallet Options */}
-          {method === "wallet" && (
-            <div className="wallet-grid">
-              <button
-                className="wallet-btn"
-                onClick={() => {
-                  setWallet("truemoney");
-                  setError(""); // Clear error when this wallet is selected
-                }}
-              >
-                <img
-                  src="https://play-lh.googleusercontent.com/eOzvk-ekluYaeLuvDkLb5RJ0KqfFQpodZDnppxPfpEfqEqbNo5erEkmwLBgqP-k-e2kQ"
-                  alt="TrueMoney"
-                />
-                <span>TrueMoney</span>
-              </button>
-              <button
-                className="wallet-btn"
-                onClick={() => {
-                  setWallet("promptpay");
-                  setError(""); // Clear error when this wallet is selected
-                }}
-              >
-                <img
-                  src="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png"
-                  alt="PromptPay"
-                />
-                <span>PromptPay</span>
-              </button>
-              <button
-                className="wallet-btn"
-                onClick={() => {
-                  setWallet("alipay");
-                  setError(""); // Clear error when this wallet is selected
-                }}
-              >
-                <img
-                  src="https://cdn.techinasia.com/data/images/c91cff808dad89b1dd21f6f3f433c521.png"
-                  alt="Alipay"
-                />
-                <span>Alipay</span>
-              </button>
-              <button
-                className="wallet-btn"
-                onClick={() => {
-                  setWallet("linepay");
-                  setError(""); // Clear error when this wallet is selected
-                }}
-              >
-                <img
-                  src="https://d.line-scdn.net/linepay/portal/v-241028/portal/assets/img/linepay-logo-jp-gl.png"
-                  alt="Line Pay"
-                />
-                <span>Line Pay</span>
-              </button>
+          {wallet === "truemoney" && (
+            <div className="qr-code-section">
+              <h2>Scan the QR Code</h2>
+              <img
+                className="qr-code-img"
+                src={TrueMoneyQR}
+                alt="TrueMoneyQR"
+              />
             </div>
           )}
-        </div>
-        {wallet === "truemoney" && (
-          <div className="qr-code-section">
-            <h2>Scan the QR Code</h2>
-            <img className="qr-code-img" src={TrueMoneyQR} alt="TrueMoneyQR" />
-          </div>
-        )}
-        {wallet === "promptpay" && (
-          <div className="qr-code-section">
-            <h2>Scan the QR Code</h2>
-            <img className="qr-code-img" src={PromptPayQR} alt="PromptPayQR" />
-          </div>
-        )}
-        {wallet === "alipay" && (
-          <div className="qr-code-section">
-            <h2>Scan the QR Code</h2>
-            <img className="qr-code-img" src={AlipayQR} alt="AlipayQR" />
-          </div>
-        )}
-        {wallet === "linepay" && (
-          <div className="qr-code-section">
-            <h2>Scan the QR Code</h2>
-            <img className="qr-code-img" src={LinePayQR} alt="LinePayQR" />
-          </div>
-        )}
+          {wallet === "promptpay" && (
+            <div className="qr-code-section">
+              <h2>Scan the QR Code</h2>
+              <img
+                className="qr-code-img"
+                src={PromptPayQR}
+                alt="PromptPayQR"
+              />
+            </div>
+          )}
+          {wallet === "alipay" && (
+            <div className="qr-code-section">
+              <h2>Scan the QR Code</h2>
+              <img className="qr-code-img" src={AlipayQR} alt="AlipayQR" />
+            </div>
+          )}
+          {wallet === "linepay" && (
+            <div className="qr-code-section">
+              <h2>Scan the QR Code</h2>
+              <img className="qr-code-img" src={LinePayQR} alt="LinePayQR" />
+            </div>
+          )}
 
-        {method === "card" && (
-          <div className="card-details-form">
-            <div className="form-group">
-              <label htmlFor="cardNumber">Card Number</label>
-              <div
-                className="card-number-input"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  position: "relative",
-                }}
-              >
-                <input
-                  type="text"
-                  id="cardNumber"
-                  name="cardNumber"
-                  placeholder="1234-5678-9012-3456"
-                  value={cardDetails.cardNumber}
-                  onChange={handleCardInputChange}
-                  style={{ flex: 1, color: "#909090" }}
-                />
-                {cardType && cardType in cardTypeIcons && (
-                  <img
-                    src={cardTypeIcons[cardType as keyof typeof cardTypeIcons]}
-                    alt={cardType}
-                    className="card-type-icon"
+          {method === "card" && (
+            <div className="card-details-form">
+              <div className="form-group">
+                <label htmlFor="cardNumber">Card Number</label>
+                <div
+                  className="card-number-input"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    position: "relative",
+                  }}
+                >
+                  <input
+                    type="text"
+                    id="cardNumber"
+                    name="cardNumber"
+                    placeholder="1234-5678-9012-3456"
+                    value={cardDetails.cardNumber}
+                    onChange={handleCardInputChange}
+                    style={{ flex: 1, color: "#909090" }}
                   />
+                  {cardType && cardType in cardTypeIcons && (
+                    <img
+                      src={
+                        cardTypeIcons[cardType as keyof typeof cardTypeIcons]
+                      }
+                      alt={cardType}
+                      className="card-type-icon"
+                    />
+                  )}
+                </div>
+                {errors.cardNumber && (
+                  <div className="error-message">{errors.cardNumber}</div>
                 )}
               </div>
-              {errors.cardNumber && (
-                <div className="error-message">{errors.cardNumber}</div>
-              )}
+              <div className="form-group">
+                <label htmlFor="cardholderName">Cardholder Name</label>
+                <input
+                  type="text"
+                  id="cardholderName"
+                  name="cardholderName"
+                  placeholder="John Doe"
+                  value={cardDetails.cardholderName}
+                  style={{ color: "#909090" }}
+                  onChange={(e) =>
+                    setCardDetails((prev) => ({
+                      ...prev,
+                      cardholderName: e.target.value,
+                    }))
+                  }
+                />
+                {errors.cardholderName && (
+                  <div className="error-message">{errors.cardholderName}</div>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="expiryMonth">Expiry Month</label>
+                <select
+                  id="expiryMonth"
+                  name="expiryMonth"
+                  value={cardDetails.expiryMonth}
+                  onChange={handleCardInputChange}
+                  style={{ color: "#909090" }}
+                >
+                  <option value="">Month</option>
+                  {[...Array(12).keys()].map((m) => (
+                    <option key={m + 1} value={String(m + 1).padStart(2, "0")}>
+                      {String(m + 1).padStart(2, "0")}
+                    </option>
+                  ))}
+                </select>
+                {errors.expiryMonth && (
+                  <div className="error-message">{errors.expiryMonth}</div>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="expiryYear">Expiry Year</label>
+                <select
+                  id="expiryYear"
+                  name="expiryYear"
+                  value={cardDetails.expiryYear}
+                  onChange={handleCardInputChange}
+                  style={{ color: "#909090" }}
+                >
+                  <option value="">Year</option>
+                  {Array.from(
+                    { length: 30 },
+                    (_, i) => new Date().getFullYear() + i
+                  ).map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+                {errors.expiryYear && (
+                  <div className="error-message">{errors.expiryYear}</div>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="cvv">CVV</label>
+                <input
+                  type="text"
+                  id="cvv"
+                  name="cvv"
+                  placeholder="123"
+                  value={cardDetails.cvv}
+                  onChange={handleCardInputChange}
+                  style={{ color: "#909090" }}
+                />
+                {errors.cvv && (
+                  <div className="error-message">{errors.cvv}</div>
+                )}
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="cardholderName">Cardholder Name</label>
-              <input
-                type="text"
-                id="cardholderName"
-                name="cardholderName"
-                placeholder="John Doe"
-                value={cardDetails.cardholderName}
-                style={{ color: "#909090" }}
-                onChange={(e) =>
-                  setCardDetails((prev) => ({
-                    ...prev,
-                    cardholderName: e.target.value,
-                  }))
-                }
-              />
-              {errors.cardholderName && (
-                <div className="error-message">{errors.cardholderName}</div>
-              )}
-            </div>
-            <div className="form-group">
-              <label htmlFor="expiryMonth">Expiry Month</label>
-              <select
-                id="expiryMonth"
-                name="expiryMonth"
-                value={cardDetails.expiryMonth}
-                onChange={handleCardInputChange}
-                style={{ color: "#909090" }}
-              >
-                <option value="">Month</option>
-                {[...Array(12).keys()].map((m) => (
-                  <option key={m + 1} value={String(m + 1).padStart(2, "0")}>
-                    {String(m + 1).padStart(2, "0")}
-                  </option>
-                ))}
-              </select>
-              {errors.expiryMonth && (
-                <div className="error-message">{errors.expiryMonth}</div>
-              )}
-            </div>
-            <div className="form-group">
-              <label htmlFor="expiryYear">Expiry Year</label>
-              <select
-                id="expiryYear"
-                name="expiryYear"
-                value={cardDetails.expiryYear}
-                onChange={handleCardInputChange}
-                style={{ color: "#909090" }}
-              >
-                <option value="">Year</option>
-                {Array.from(
-                  { length: 30 },
-                  (_, i) => new Date().getFullYear() + i
-                ).map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-              {errors.expiryYear && (
-                <div className="error-message">{errors.expiryYear}</div>
-              )}
-            </div>
-            <div className="form-group">
-              <label htmlFor="cvv">CVV</label>
-              <input
-                type="text"
-                id="cvv"
-                name="cvv"
-                placeholder="123"
-                value={cardDetails.cvv}
-                onChange={handleCardInputChange}
-                style={{ color: "#909090" }}
-              />
-              {errors.cvv && <div className="error-message">{errors.cvv}</div>}
-            </div>
-          </div>
-        )}
+          )}
 
-        <div className="button-container">
-          <button
-            className="ax"
-            onClick={handleConfirm} // ใช้ handleConfirmebooking โดยตรง
-            disabled={isSubmitting} // ปิดการใช้งานปุ่มขณะกำลังส่ง
-          >
-            {isSubmitting ? "Processing..." : "Confirm Payment"}
-          </button>
-          <button className="cx" onClick={() => navigate(-1)}>
-            Cancel
-          </button>
+          <div className="button-container">
+            <button
+              className="ax"
+              onClick={handleConfirm} // ใช้ handleConfirmebooking โดยตรง
+              disabled={isSubmitting} // ปิดการใช้งานปุ่มขณะกำลังส่ง
+            >
+              {isSubmitting ? "Processing..." : "Confirm Payment"}
+            </button>
+            <button className="cx" onClick={() => navigate(-1)}>
+              Cancel
+            </button>
+          </div>
+          <Outlet />
         </div>
-        <Outlet />
-      </div>
+      )}
     </div>
   );
 };

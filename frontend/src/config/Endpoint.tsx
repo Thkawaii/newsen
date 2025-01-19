@@ -8,5 +8,7 @@ export const Endpoint = {
   PAYMENT: HOST_SERVE + API + V1 + "/payments",
   PROMOTION_USECOUNT: HOST_SERVE + API + V1 + "/promotions/use-count",
   REVIEW: HOST_SERVE + API + V1 + "/reviews",
-  TRAINBOOK: HOST_SERVE + API + V1 + "/rooms",
+  REVIEW_DRIVER: HOST_SERVE + API + V1 + "/reviews/driver",
+  PAYMENT_NOTIFY: HOST_SERVE + API + V1 + "/payment-notify",
+  REVIEW_NOTIFY: HOST_SERVE + API + V1 + "/review-notify",
 };
