@@ -1,0 +1,729 @@
+{
+  "id": "0647786b-135e-437e-ab03-c0859463c56d",
+  "version": "2.0",
+  "name": "booking false",
+  "url": "http://localhost:5173/map",
+  "tests": [{
+    "id": "8744e060-f0e5-43d6-92e0-3de9e8028788",
+    "name": "false",
+    "commands": [{
+      "id": "643707e7-183f-40f1-9a90-14e28e8dc4fd",
+      "comment": "",
+      "command": "open",
+      "target": "/map",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f37d9759-5595-4c12-b18c-41df65fa4a49",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "87385200-8bc5-488b-bb8d-642963bb52d8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Pick-up point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d2a3d89-36dd-4e6f-876f-2c1344fdbf83",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "กรุณาเลือกจุดเริ่มต้นก่อน",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "2b7cf041-a652-4ee0-a79e-0ba14e75ec8a",
+    "name": "true",
+    "commands": [{
+      "id": "62decd4b-62cc-4655-ac4e-4dea05ea6078",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/map",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "720ba4aa-3052-4871-b8f1-e9ceea12ccb6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d5a16e4e-22f3-48a5-87e2-a0d3aeb99695",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07ed3e54-70cb-4c83-bdbf-de3cd688721a",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='ประโคนชัยพิทยาคม']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ประโคนชัยพิทยาคม"
+    }, {
+      "id": "325cf5b3-a0c2-4c06-aa32-ddaa1a50a968",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Pick-up point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e589c84f-d330-48cc-a472-dbd266e1361f",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8437c70c-6a1d-40d4-b4b2-44b380eb04e8",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bd1ae819-8c6a-4303-ace3-2d505edec1d1",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f6273d4-a7a9-45b0-b029-997da74cd20c",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='โลตัสประโคนชัย']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "โลตัสประโคนชัย"
+    }, {
+      "id": "4d7ed6fd-f0ea-4d23-a314-ea054e9234ca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "23376ebc-0269-45c1-801f-ed3604138dc2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ticket-container",
+      "targets": [
+        ["css=.ticket-container", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "57516b01-ac46-4af0-b43a-57ae423e8ff5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ticket:nth-child(1) .vehicle-item",
+      "targets": [
+        ["css=.ticket:nth-child(1) .vehicle-item", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div/div/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[3]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b041fbfd-487e-4104-9518-e7f10c26c950",
+      "comment": "",
+      "command": "click",
+      "target": "css=.booking-button",
+      "targets": [
+        ["css=.booking-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[4]/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Booking Cabana')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e884cb9b-ef27-4e24-8055-1dd37570411e",
+      "comment": "",
+      "command": "pause",
+      "target": "5000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9030d42c-8e6f-40b8-898b-9aa546b7f5b0",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=success-message",
+      "targets": [],
+      "value": "การจองสำเร็จ!"
+    }]
+  }, {
+    "id": "abff5131-4903-4c55-bb89-ccf34e6717d3",
+    "name": "booking last",
+    "commands": [{
+      "id": "2ebf88da-ddc5-4a15-8b35-f9e9adc06c46",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/map",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e40d6507-8ecc-4f80-a27a-e42352c08366",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0fc9854a-3397-4607-9416-9106613182a3",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "863b0f85-44f3-4147-8f1e-e17101612c61",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='มหาวิทยาลัยเทคโนโลยีสุรนนารี']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "มหาวิทยาลัยเทคโนโลยีสุรนนารี"
+    }, {
+      "id": "4434faa2-3cf0-427c-acde-b40b919ca069",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Pick-up point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8fa625be-32c9-43eb-a7a3-06a157bc216c",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "625daa09-49b0-48e5-9f35-a9e4274b47fd",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce3526a4-b75b-4bbe-b07a-fc287558c0f1",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "32d26d52-07ac-413d-a469-6af120c82d62",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='โรงเรียนประโคนชัยพิทยาคม']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "โรงเรียนประโคนชัยพิทยาคม"
+    }, {
+      "id": "e1c5a1f0-72e1-426e-9aba-01cd46dc9c1b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "406dda0a-a9e7-4307-84d2-84f1f15396bd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ticket:nth-child(1) .vehicle-item",
+      "targets": [
+        ["css=.ticket:nth-child(1) .vehicle-item", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div/div/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[3]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a7f7af1-d4ab-46ce-9482-e0c9bf44ad2c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.booking-button",
+      "targets": [
+        ["css=.booking-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[4]/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Booking Cabana')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a9de2db-4621-428d-a270-8f146c13a232",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "การจองสำเร็จ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "cce44f2b-3720-4ca1-9033-c7d3fcbb15fe",
+    "name": "booking 2",
+    "commands": [{
+      "id": "1322ef76-0a89-495e-b902-573d68afbbfa",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/map",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "868f5d5a-84da-4c63-8c86-e04faf4722fc",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6c68dd37-7d54-4507-85c8-52b4dc993b73",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d59a6529-cdd7-4de3-8cb3-84fdfb7bedc7",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='โรงเรียนประโคนชัยพิทยาคม']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "โรงเรียนประโคนชัยพิทยาคม"
+    }, {
+      "id": "00d5c600-271e-44c9-ad09-3a5fded594cf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Pick-up point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "400246da-5fc6-4e1d-a791-aa47772fbaba",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "ไม่สามารถบันทึกข้อมูลจุดเริ่มต้นได้",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "1fcedc35-7b00-47c2-ae7e-b8ee48ec8f39",
+    "name": "booking12",
+    "commands": [{
+      "id": "935bad11-73f5-4129-b108-5fad101f4a90",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/map",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7f71a0d7-14bc-43a0-8bf5-fa000dc954b1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ce0385c-0e23-4eec-9e10-3647f39eda1c",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5db52832-7f7d-4fe7-8bbd-c34b66fc3357",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='โรงเรียนประโคนชัยพิทยาคม']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "โรงเรียนประโคนชัยพิทยาคม"
+    }, {
+      "id": "ed3aa0c3-b663-44e4-ac6d-341ebb7e9155",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Pick-up point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "acb2fe10-e9ec-4260-827b-c6742bb3454f",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c82c992a-fc81-41b9-a1f9-3b36ed268578",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8855cfb3-d810-4b38-a71f-150af2ebe810",
+      "comment": "",
+      "command": "click",
+      "target": "css=.destination > div:nth-child(3)",
+      "targets": [
+        ["css=.destination > div:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9c5d98a-15d6-4e19-b1c8-ad10f76b9f4b",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "508116f2-0a23-481a-9913-247c60685688",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='มทส']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "มทส"
+    }, {
+      "id": "0e3c2850-388c-46c3-83ce-a6d7c901d04d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "80ae7674-f20e-4d05-9498-79887ee46740",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ticket:nth-child(1) .vehicle-item",
+      "targets": [
+        ["css=.ticket:nth-child(1) .vehicle-item", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div/div/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[3]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b1482ce-7189-4059-90bd-7bc81503c697",
+      "comment": "",
+      "command": "click",
+      "target": "css=.booking-button",
+      "targets": [
+        ["css=.booking-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[4]/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Booking Cabana')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "7ddae047-21e4-4d76-ab85-f1cddc26b0d8",
+    "name": "last booking",
+    "commands": [{
+      "id": "0d67a779-b4af-498a-9e8f-0ab5f192513f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/map",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "357699e0-a8e1-4cb5-b249-53427123ca26",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "63969781-12ff-45df-9609-fe87058fa6bf",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2675d75c-1860-4bc5-9ce1-26b86f9091c4",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='โรงเรียนกัลยาประสิทธิ์']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "โรงเรียนกัลยาประสิทธิ์"
+    }, {
+      "id": "19185733-2e46-4143-9b39-2a5cb33ddadb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Pick-up point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ccd6ee40-dcaa-4cc2-ab52-ede6ea32ef03",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "36ee9a8d-c9c2-436d-a386-d897c3f4cdf2",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "69a5254b-3b49-4d7f-b9c2-49c7e348a51f",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d83219e-7d1f-4c50-a0a3-1f49afc02acd",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "73c69ca1-8b33-4174-b7d5-b4e2da6150a0",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='โรงเรียนประโคนชัยพิทยาคม']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "โรงเรียนประโคนชัยพิทยาคม"
+    }, {
+      "id": "44df9938-2ff6-4ed7-92e9-e8468dcbc0ab",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Drop off point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "87825937-7b81-4c3e-bfe3-01e79467dabc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ticket:nth-child(3) .vehicle-item",
+      "targets": [
+        ["css=.ticket:nth-child(3) .vehicle-item", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[3]/div/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[3]/div[3]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "200a5f59-aa6a-4647-95d0-064ab289b829",
+      "comment": "",
+      "command": "click",
+      "target": "css=.booking-button",
+      "targets": [
+        ["css=.booking-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[4]/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Booking Cabana')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fbd596f3-178e-41b6-88a6-1e2118e1a5c5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.success-message",
+      "targets": [
+        ["css=.success-message", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[3]", "xpath:position"]
+      ],
+      "value": "การจองสำเร็จ!"
+    }]
+  }],
+  "suites": [{
+    "id": "5f1e7995-5e15-4a15-a051-498b3bf98f74",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8744e060-f0e5-43d6-92e0-3de9e8028788"]
+  }],
+  "urls": ["http://localhost:5173/", "http://localhost:5173/map"],
+  "plugins": []
+}

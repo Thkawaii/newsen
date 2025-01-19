@@ -1,0 +1,45 @@
+/* กล่องแสดงหน้าจบงาน */
+.finish-job-container {
+    background-color: #ffffff; /* สีพื้นหลังของกล่อง */
+    padding: 30px;
+    border-radius: 12px; /* ความโค้งมนของกล่อง */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    text-align: center;
+    width: 90%; /* ปรับความกว้าง */
+    max-width: 400px; /* จำกัดความกว้างสูงสุด */
+    margin: 20px auto; /* จัดให้อยู่ตรงกลาง */
+  }
+  
+  .finish-job-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #4caf50; /* สีเขียว */
+  }
+  
+  .finish-job-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .btn-finish-job {
+    background-color: #4caf50; /* สีพื้นหลังของปุ่ม */
+    color: white; /* สีข้อความของปุ่ม */
+    padding: 12px 20px; /* ระยะ Padding */
+    font-size: 18px; /* ขนาดข้อความ */
+    border: none; /* ลบขอบ */
+    border-radius: 8px; /* เพิ่มความโค้งมน */
+    cursor: pointer; /* เปลี่ยนรูปเคอร์เซอร์ */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* เพิ่มเอฟเฟกต์ */
+  }
+  
+  .btn-finish-job:hover {
+    background-color: #45a049; /* สีเขียวเข้มเมื่อ hover */
+    transform: scale(1.05); /* ขยายเล็กน้อยเมื่อ hover */
+  }
+  
+  .error {
+    color: #d32f2f; /* สีแดง */
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  

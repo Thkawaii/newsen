@@ -1,0 +1,49 @@
+/* Promotion.css */
+/* Header Style */
+.promotion-header {
+    font-size: 40px; /* เพิ่มขนาดฟอนต์ */
+    font-weight: bold; /* ทำตัวหนา */
+    color: #6C3C9C; /* สีที่เด่นขึ้น (ม่วงเข้ม) */
+    padding-bottom: 8px; /* เพิ่มระยะห่างระหว่างข้อความกับเส้นขอบ */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ข้อความ */
+    margin: 0; /* ลบ margin บนและล่าง */
+    letter-spacing: 1px; /* เพิ่มระยะห่างระหว่างตัวอักษร */
+    display: inline-block; /* ให้ข้อความไม่ถูกแยก */
+  }
+  
+  /* เพิ่มคลาสสำหรับทำให้หัวข้อมีเส้นขอบหรือลงสีที่ชัดเจน */
+  .promotion-header:focus,
+  .promotion-header:hover {
+    color: #9333EA; /* เมื่อมีการชี้หรือคลิก สีจะเปลี่ยนเป็นม่วง */
+    border-bottom: 4px solid #6C3C9C; /* เปลี่ยนสีของเส้นขอบเมื่อมีการโฟกัสหรือ hover */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือ */
+  }
+  
+  .promotion-table {
+    width: 100%;
+    background-color: #f4f4f9;
+  }
+  
+  .promotion-table .ant-table-thead > tr > th {
+    background-color: #47456c;
+    color: #fff;
+  }
+  
+  .promotion-table .ant-table-tbody > tr:hover {
+    background-color: #e8e8e8;
+  }
+  
+  .promotion-button {
+    background-color: #9333ea;
+    border-color: #9333ea;
+  }
+  
+  .promotion-edit-button {
+    background-color: #575a83;
+    border-color: #575a83;
+  }
+  
+  .promotion-delete-button {
+    border-color: #47456c;
+    color: #47456c;
+  }

@@ -1,0 +1,165 @@
+/* General Container */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    background-color: #EDE8FE;
+    overflow: auto;
+  }
+  
+  /* Wallet Section */
+  .wallet-header {
+    font-size: 50px;
+    font-weight: bold;
+    color: #9333EA;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 2px solid #7F6BCC; /* Added border around wallet header */
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #DAD6EF;
+  }
+  
+  /* Wallet Card Styling */
+  .wallet-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 10px;
+    border: none;
+    max-width: 2000px;
+    margin: 0 auto;
+  }
+  
+  .wallet-logo {
+    width: 200px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .balance-text {
+    font-size: 20px;
+    color: #47456C;
+    margin-bottom: 20px;
+  }
+  
+  /* Enhanced Balance Amount Styling */
+  .balance-amount {
+    font-size: 30px;
+    color: #47456C;
+    font-weight: bold;
+    background: linear-gradient(to right, #7F6BCC, #9333EA);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adding shadow effect */
+  }
+  
+  /* Icon Styling */
+  .balance-icon {
+    color: #7F6BCC;
+    margin-right: 8px;
+  }
+  
+  /* Button Styling */
+  /* Button Styling */
+.withdraw-button {
+    background-color: #9333EA; /* สีที่เด่นขึ้น */
+    border-color: #9333EA;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white; /* ข้อความสีขาวเพื่อความชัดเจน */
+    font-weight: bold; /* ข้อความหนา */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* เงาที่เด่นขึ้น */
+    transition: all 0.3s ease-in-out; /* เพิ่มการเปลี่ยนแปลงที่เรียบง่าย */
+}
+
+.history-button {
+    background-color: #47456cb2; /* สีที่เข้มขึ้น */
+    border-color: #7F6BCC;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white; /* ข้อความสีขาว */
+    font-weight: bold; /* ข้อความหนา */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* เงาที่เด่นขึ้น */
+    transition: all 0.3s ease-in-out; /* การเปลี่ยนแปลง */
+}
+
+/* Hover Effects */
+.withdraw-button:hover {
+    background-color: #7F6BCC; /* สีที่อ่อนขึ้นเมื่อ hover */
+    border-color: #7F6BCC;
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อย */
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3); /* เงาที่แข็งแรงขึ้น */
+}
+
+.history-button:hover {
+    background-color: #47456C; /* สีที่เข้มขึ้นเมื่อ hover */
+    border-color: #47456C;
+    transform: scale(1.05); /* ขยายขนาด */
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3); /* เงาที่แข็งแรงขึ้น */
+}
+
+  
+  /* Modal Styling */
+  .ant-modal-footer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ant-modal-title {
+    color: #9333EA;
+  }
+  
+  .ant-btn-primary {
+    background-color: #9333EA;
+    border-color: #9333EA;
+  }
+  
+  .ant-btn-primary:hover {
+    background-color: #7F6BCC;
+    border-color: #7F6BCC;
+  }
+  
+  /* Wallet Card Styling */
+.wallet-card {
+    background: rgba(255, 255, 255, 0.9); /* เพิ่มความโปร่งใสให้กับพื้นหลัง */
+    backdrop-filter: blur(10px); /* ทำให้พื้นหลังเบลอเล็กน้อย */
+    text-align: center;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 15px; /* เพิ่มมุมโค้ง */
+    border: 2px solid #7F6BCC; /* เพิ่มกรอบด้วยสีเดียวกับหัวข้อกระเป๋าเงิน */
+    max-width: 2000px;
+    margin: 0 auto;
+  }
+  
+  /* เพิ่มสีพื้นหลังที่เหมือนหัวข้อกระเป๋าเงิน */
+  .wallet-card {
+    background-color: #f5f5f536; /* พื้นหลังคล้ายหัวข้อกระเป๋าเงิน */
+    border: 2px solid #7F6BCC; /* เพิ่มกรอบด้วยสีเดียวกับหัวข้อกระเป๋าเงิน */
+  }
+  
+  /* Wallet Header */
+  .wallet-header {
+    font-size: 50px;
+    font-weight: bold;
+    color: #9333EA;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 2px solid #7F6BCC; /* เพิ่มกรอบให้หัวข้อ */
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #f5f5f536; /* พื้นหลังคล้ายกับการ์ด */
+  }
+  

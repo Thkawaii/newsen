@@ -1,0 +1,100 @@
+
+
+/* กำหนดพื้นหลัง */
+.pagesprebooking {
+  background-color: #8792E7; /* สีพื้นหลังม่วง */
+  width: 100vw; /* เต็มความกว้างหน้าจอ */
+  
+  display: flex; /* ใช้ flexbox เพื่อจัดให้อยู่กึ่งกลาง */
+  justify-content: center; /* จัดให้อยู่กึ่งกลางแนวนอน */
+  align-items: flex-start; /* จัดให้อยู่แนวตั้งแบบเริ่มจากด้านบน */
+  padding: 50px 0; /* เพิ่ม Padding เพื่อเลื่อนฟอร์มลงมา */
+  box-sizing: border-box;
+}
+
+/* กล่องฟอร์ม */
+.pre-booking {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #ffffff; /* สีพื้นหลังของฟอร์ม */
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* เพิ่มเงา */
+}
+
+
+  
+  
+  h1 {
+    text-align: center;
+    color: #4b0082; /* สีหัวข้อ */
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4b0082; /* สีข้อความของ label */
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #c4b5fd; /* เส้นขอบม่วงอ่อน */
+    border-radius: 8px;
+    background-color: #f9f7ff; /* พื้นหลัง input */
+    color: #4b0082;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus, select:focus {
+    border-color: #7c3aed; /* เส้นขอบเปลี่ยนเป็นม่วงเข้มเมื่อ focus */
+    box-shadow: 0 0 5px rgba(124, 58, 237, 0.5);
+  }
+  
+  button.btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #7c3aed; /* ปุ่มสีม่วง */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button.btn-submit:hover {
+    background-color: #5b21b6; /* สีม่วงเข้มขึ้นเมื่อ hover */
+    box-shadow: 0 4px 10px rgba(91, 33, 182, 0.3);
+  }
+  
+  .error {
+    color: #b91c1c; /* สีข้อความแสดงข้อผิดพลาด (แดง) */
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .status {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .status.success {
+    color: #4caf50; /* สีเขียวเมื่อสำเร็จ */
+  }
+  
+  .status.error {
+    color: #b91c1c; /* สีแดงเมื่อเกิดข้อผิดพลาด */
+  }
+  

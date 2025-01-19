@@ -1,0 +1,288 @@
+.MapRoute{
+  background-color: #bdb3f5; /* สีพื้นหลัง */
+  width: auto;
+  height: auto;
+  
+  
+}
+
+.distance {
+  background-color: #bdb3f5; /* สีพื้นหลัง */
+  border: 2px solid #8367c7; /* ขอบกล่อง */
+  padding: 10px 20px; /* การเว้นระยะภายในกล่อง */
+  border-radius: 8px; /* มุมโค้งมน */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาของกล่อง */
+  max-width: 300px; /* ความกว้างสูงสุดของกล่อง */
+  text-align: center; /* จัดข้อความให้อยู่กลาง */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  
+}
+
+.distance h3 {
+  color:  #D9D7EF; /* สีของข้อความ */
+  font-size: 18px; /* ขนาดตัวอักษร */
+  font-weight: 600; /* หนักตัวอักษร */
+  margin: 0; /* เอาระยะห่างในตัวอักษรออก */
+}
+
+
+
+.vehicle-selector {
+  font-family: Arial, sans-serif;
+  height: 120vh;
+ 
+}
+
+.vehicle-list {
+  list-style: none;
+  padding: 0;
+}
+
+
+.vehicle-item {
+  /*background-color: #8792E7; /* สีพื้นหลังอ่อน ๆ */
+  padding: 20px; /* เพิ่ม padding เพื่อให้ขยายใหญ่ขึ้น */
+  
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* เพิ่มการเปลี่ยนแปลงขนาดในระหว่าง hover */
+  font-size: 18px; /* เพิ่มขนาดตัวอักษร */
+  width: 100%; /* ขยายความกว้างให้เต็มที่ */
+  display: flex; /* ใช้ flexbox เพื่อให้ข้อมูลอยู่ในบรรทัดเดียว */
+  align-items: center; /* จัดให้อยู่กลางในแนวดิ่ง */
+  gap: 20px; /* ระยะห่างระหว่างไอคอนและข้อมูล */
+}
+
+/*.vehicle-item:hover {
+  background-color: #6f67cb; /* เปลี่ยนสีเมื่อ hover */
+
+
+
+button {
+  background-color:  #D9D7EF; /* ปุ่มสีม่วง */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px; /* ระยะห่างระหว่างปุ่มและข้อมูล */
+}
+
+button:hover {
+  background-color:  #a7a1ef; /* เปลี่ยนสีเมื่อ hover */
+}
+
+.selected-vehicle {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #92669c; /* สีพื้นหลังอ่อน */
+  border-radius: 8px;
+  border: 2px solid  #4a40b7; /* ขอบสีม่วงเข้ม */
+  font-size: 16px; /* ขนาดฟอนต์ที่เหมาะสม */
+}
+
+
+
+.vehicle-info {
+  display: flex; /* ใช้ flexbox เพื่อให้ข้อมูลอยู่ในบรรทัดเดียว */
+  align-items: center; /* จัดให้อยู่กลางในแนวดิ่ง */
+  gap: 20px; /* ระยะห่างระหว่างแต่ละข้อมูล */
+  flex-wrap: wrap; /* ช่วยจัดการกรณีที่หน้าจอเล็กลง */
+}
+
+.vehicle-info h3 {
+  margin: 0;
+  font-size: 18px;
+  color:  #D9D7EF; /* สีของชื่อรถ */
+}
+
+.vehicle-info p {
+  margin: 0;
+  color:  #D9D7EF; /* สีข้อความของรายละเอียด */
+  font-size: 16px;
+}
+
+.vehicle-icon {
+  font-size: 30px; /* ขนาดของไอคอน */
+  color:  #D9D7EF; /* สีของไอคอน */
+  margin-right: 15px;
+}
+.booking-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: #bdb3f5; /* สีพื้นหลัง */
+ 
+}
+
+.booking-button {
+  background-color: #7F6ACB;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 30px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ตั๋ว */
+.ticket {
+position: relative;
+width: 250px; /* ความกว้าง */
+height: 150px; /* ความสูง */
+border-radius: 20px;
+background-color: #EADCF8; /* สีม่วงอ่อนเริ่มต้น */
+overflow: hidden;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ตั๋วขวา */
+.ticket-right {
+background-color: #D6A3F7; /* สีม่วงเข้ม */
+}
+
+/* โค้งด้านข้าง */
+.ticket::before, .ticket::after {
+content: '';
+position: absolute;
+width: 30px;
+height: 60px;
+background-color: white;
+border-radius: 50%;
+top: 50%;
+transform: translateY(-50%);
+z-index: 1;
+}
+
+.ticket::before {
+left: -15px; /* โค้งด้านซ้าย */
+}
+
+.ticket::after {
+right: -15px; /* โค้งด้านขวา */
+}
+
+/* เส้นประ */
+.dashed-border {
+position: absolute;
+top: 10px;
+left: 10px;
+right: 10px;
+bottom: 10px;
+border: 2px dashed #BA9CD3; /* สีม่วงประ */
+border-radius: 15px;
+}
+
+
+
+
+/* Container หลัก */
+.ticket-container {
+display: block; /* ใช้ block layout เพื่อแยกบรรทัด */
+width: 100%;
+padding: 20px;
+background-color: #bdb3f5;
+}
+
+/* ตั๋ว */
+.ticket {
+position: relative;
+width: 90%; /* กำหนดความกว้างแต่ละบล็อก */
+margin: 10px auto; /* จัดตรงกลางและเพิ่มระยะห่างระหว่างบล็อก */
+border-radius: 20px;
+background-color: #EADCF8; /* สีม่วงอ่อน */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+overflow: hidden;
+border: 2px solid #BA9CD3;
+}
+
+/* เส้นประ */
+.dashed-border {
+border: 2px dashed #BA9CD3;
+border-radius: 15px;
+padding: 20px;
+box-sizing: border-box;
+}
+
+/* Vehicle Item */
+.vehicle-item {
+display: flex;
+
+align-items: center;
+gap: 10px;
+}
+
+
+
+.ticket.selected {
+border: 2px solid #007bff;
+background-color: #e0f0ff;
+}
+
+/* Vehicle Icon */
+.vehicle-icon {
+font-size: 24px;
+width: 60px;
+height: 60px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background-color: #542d5b;
+}
+
+/* Vehicle Info */
+.vehicle-info h3 {
+margin: 0;
+font-size: 18px;
+text-align: center;
+color:#4a40b7;
+font-weight: bold;
+}
+
+.vehicle-info p {
+margin: 5px 0;
+font-size: 18px;
+text-align: center;
+color:#4a40b7;
+font-weight: bold;
+}
+
+.success-message {
+  background-color: #685e83;
+  color: #ede9f5;
+  padding: 10px;
+  margin: 20px 0;
+  border: 1px solid #9c72a0;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+  
+}
+
+/* เพิ่มเอฟเฟกต์ Fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

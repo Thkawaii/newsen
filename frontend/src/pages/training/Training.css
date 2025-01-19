@@ -1,0 +1,87 @@
+/* Training Layout */
+.training-layout {
+    padding: 20px;
+    background-color: #f5f3fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* ทำให้เต็มหน้าจอแนวตั้ง */
+  }
+  
+  /* Container for training details */
+  .training-container {
+    max-width: 1000px; /* เพิ่มความกว้างสูงสุด */
+    width: 100%; /* ทำให้เต็มหน้าจอ */
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 12px; /* เพิ่มความโค้งมน */
+    padding: 30px; /* เพิ่ม padding ด้านใน */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* เพิ่มเงา */
+    transition: all 0.3s ease; /* เพิ่มความนุ่มนวลเมื่อขยาย */
+  }
+  
+  /* Title styles */
+  .training-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px; /* เพิ่มขนาดตัวอักษร */
+    color: #5a5a5a; /* สีหัวข้อ */
+    font-weight: bold;
+  }
+  
+  /* Loading state */
+  .training-loading {
+    text-align: center;
+    color: #6c757d;
+    font-size: 18px;
+    font-style: italic;
+  }
+  
+  /* No data state */
+  .training-no-data {
+    text-align: center;
+    color: #ff5a5f;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* Details styles */
+  .training-details {
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  
+  .training-details p {
+    font-size: 18px;
+    color: #4a4a4a;
+    margin: 10px 0;
+  }
+  
+  .training-details strong {
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .training-list {
+    list-style-type: decimal; /* แสดงรายการเป็นตัวเลข */
+    padding-left: 20px; /* เพิ่มระยะห่างด้านซ้าย */
+    margin-top: 10px;
+    color: #4a4a4a; /* สีข้อความ */
+    font-size: 16px;
+  }
+  
+  .training-list li {
+    margin-bottom: 15px; /* เพิ่มระยะห่างระหว่างหัวข้อ */
+  }
+  
+  .training-list li strong {
+    font-size: 18px;
+    color: #000;
+  }
+  
+  .training-list li p {
+    margin: 5px 0 0 10px; /* เว้นระยะจากหัวข้อ */
+    font-size: 16px;
+    color: #333;
+  }
+  

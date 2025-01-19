@@ -1,0 +1,37 @@
+/* สไตล์สำหรับ navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c2031; /* สีพื้นหลังของ Navbar */
+}
+
+.navbar .nav-links {
+  display: flex;
+  font-weight: bold; /* ทำข้อความตัวหนา */
+  justify-content: center; /* จัดให้อยู่กึ่งกลางแนวนอน */
+  align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+  list-style: none; /* ลบจุด bullet */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links li {
+  margin: 0 15px; /* ระยะห่างระหว่างแต่ละรายการ */
+}
+
+.navbar .nav-links li a {
+  text-decoration: none; /* ลบขีดเส้นใต้ */
+  color: #c6c3f1; /* สีของข้อความ */
+  font-size: 16px;
+}
+
+.navbar .nav-links li a:hover {
+  color: #8c62a5; /* สีข้อความเมื่อ hover */
+  transition: color 0.3s;
+}
+
+.profile-icon-wrapper:hover {
+  background-color: #ddb6ec; /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+  transition: background-color 0.3s;
+}

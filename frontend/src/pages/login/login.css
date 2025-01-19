@@ -1,0 +1,65 @@
+/* Login.css */
+
+/* การตั้งค่าของการ์ด login */
+.login-form {
+  background-color: rgba(255, 255, 255, 0.3); /* สีขาวโปร่งใส */
+  padding: 80px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+  position: relative; /* เพิ่มตำแหน่งเพื่อไม่ให้มีการทับซ้อน */
+  text-align: center; /* ให้ข้อความในฟอร์มอยู่กลาง */
+}
+
+/* แสดง logo */
+.login .logo {
+  display: block;
+  margin: 0 auto 20px;
+  width: 150px; /* ปรับขนาด logo ตามที่ต้องการ */
+  height: auto;
+}
+
+/* สไตล์ของข้อความผิดพลาด */
+.login .error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* กำหนดสไตล์ของฟอร์ม */
+.login .input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login button:hover {
+  background-color: #00409c;
+}
+
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}

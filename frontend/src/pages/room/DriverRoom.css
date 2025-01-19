@@ -1,0 +1,92 @@
+/* DriverRoom.css */
+.DriverRoom-layout-container {
+  min-height: 100vh;
+  background-color: #d9d7ef;
+  padding: 20px;
+}
+
+/* ✅ สีแถวที่ถูกเลือก */
+.DriverRoom-selected-row {
+  background-color: #ede8fe !important;
+}
+
+/* ✅ สไตล์การ์ดแสดงรายละเอียด */
+.DriverRoom-detail-card {
+  background-color: #f5f5f5;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out,
+    transform 0.4s ease-in-out;
+}
+
+/* ✅ เมื่อแสดงห้อง ให้ค่อยๆ Slide ลง */
+.DriverRoom-detail-card.show {
+  max-height: 500px; /* ปรับให้พอดีกับเนื้อหา */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ✅ ใช้ Keyframes เพื่อทำให้ Slide Smooth ขึ้น */
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.DriverRoom-slide-enter {
+  animation: slideDown 0.4s ease-out forwards;
+}
+
+/* ✅ ปุ่มกลุ่ม */
+.DriverRoom-button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* ✅ ปุ่มยกเลิก */
+.DriverRoom-cancel-button {
+  background-color: #d9d9d9;
+  color: black;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+/* ✅ ปุ่มยืนยัน (พร้อมเอฟเฟกต์เด้งเมื่อโฮเวอร์) */
+.DriverRoom-confirm-button {
+  background-color: #7f6acb;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ✅ ปุ่มเด้งขึ้นเมื่อโฮเวอร์ */
+.DriverRoom-confirm-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 10px rgba(127, 106, 203, 0.5);
+}
+
+/* ✅ ปรับสไตล์ปุ่มเลือกห้อง */
+.DriverRoom-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✅ เพิ่มเอฟเฟกต์เมื่อเลือกห้อง */
+.DriverRoom-selected-row {
+  background-color: #ede8fe !important;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}

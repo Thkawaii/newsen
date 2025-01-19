@@ -1,0 +1,85 @@
+/* General Footer Styles */
+.foot {
+  background-color: #eae6f8; /* สีม่วงอ่อน */
+  color: #4a4a4a; /* สีเทาเข้มสำหรับข้อความ */
+  padding: 20px 10px; /* เพิ่ม padding เพื่อขยับจากด้านขวา */
+  width: 100%; /* ลดความกว้างเพื่อเพิ่มพื้นที่ด้านขวา */
+  position: relative;
+  bottom: 0;
+  left: 0;
+  margin-right: 10px; /* เพิ่มระยะจากด้านขวา */
+  box-sizing: border-box; /* รวม padding ในขนาดของกล่อง */
+  
+ 
+}
+
+
+.footer .container {
+  display: flex;
+  flex-wrap: wrap; /* ทำให้คอลัมน์ย่อส่วนลงเมื่อหน้าจอแคบ */
+  gap: 20px; /* ระยะห่างระหว่างคอลัมน์ */
+}
+
+.footer .row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start; /* จัดข้อความให้แนวบนสุด */
+}
+
+.footer .col {
+  flex: 1; /* แบ่งพื้นที่เท่ากัน */
+  min-width: 200px; /* ความกว้างขั้นต่ำสำหรับแต่ละคอลัมน์ */
+}
+
+.footer h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+
+
+.foot p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.foot ul {
+  list-style: none;
+  padding: 0;
+}
+
+.foot ul li {
+  margin-bottom: 10px;
+}
+
+.foot ul li a {
+  text-decoration: none;
+  color: #6c63ff; /* สีม่วงเข้ม */
+  transition: color 0.3s ease;
+}
+
+.foot ul li a:hover {
+  color: #4a4a4a; /* สีเทาเข้ม */
+}
+
+.foot .social-icons {
+  display: flex;
+  gap: 10px;
+  margin-left: 120px;
+  
+}
+
+
+
+.foot .social-icons a {
+  color: #6c63ff; /* สีม่วงเข้ม */
+  font-size: 18px;
+  transition: color 0.3s ease;
+ 
+}
+
+.foot .social-icons a:hover {
+  color: #4a4a4a; /* สีเทาเข้ม */
+}

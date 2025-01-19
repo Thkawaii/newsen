@@ -1,0 +1,82 @@
+/* สำหรับ container ของรายการสถานที่ */
+.mapcomponent {
+  background-color: #D9D7EF; /* ตัวอย่างสีฟ้าอ่อน */
+  height: 100vh; /* กำหนดให้เต็มความสูงของหน้าจอ */
+  width: 100%; /* กำหนดให้เต็มความกว้างของหน้าจอ */
+  
+}
+
+.mapcomponent .list-place {
+    background-color: #D9D7EF;
+    z-index: 1001;
+  }
+  
+  /* สำหรับรายการของสถานที่ */
+  .mapcomponent .place-list {
+    list-style-type: none;
+    overflow-y: auto;
+    
+}
+  
+  /* สำหรับแต่ละรายการสถานที่ */
+  .mapcomponent .place-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  /* เพิ่มสไตล์เมื่อไม่มีสถานที่ใกล้เคียง */
+  .place-item.no-places {
+    text-align: center;
+    color: #888;
+  }
+  
+
+  /* MapComponent.css */
+
+
+/* สไตล์ของกล่องปุ่ม */
+.pickup-button-container {
+  width: 100%;
+  background-color: #D9D7EF;
+  padding: 10px 20px;
+  margin-top: 10px; /* เพิ่มระยะห่างจากรายการสถานที่ */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* เงาให้ดูเด่นขึ้น */
+  text-align: center; /* จัดปุ่มให้อยู่กลาง */
+  margin: 0;
+}
+
+
+/* ปุ่มเลือกจุดรับ */
+.pickup-button {
+  padding: 12px 20px;
+  background-color: #7F6ACB; /* สีม่วง */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.pickup-button:hover {
+  background-color: #a696e0; /* สีเมื่อ hover */
+}
+
+/* MapComponent.css */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #99D7EF;
+  box-sizing: border-box;
+}
+
+ .searchContainerStyle {
+  width: 100%,
+  /*padding: 10px,
+  backgroundColor: '#D9D7EF',
+  left: '0',
+  zIndex: '1000',*/
+};

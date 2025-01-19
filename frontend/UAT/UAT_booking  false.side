@@ -1,0 +1,54 @@
+{
+  "id": "0647786b-135e-437e-ab03-c0859463c56d",
+  "version": "2.0",
+  "name": "booking false",
+  "url": "http://localhost:5173",
+  "tests": [{
+    "id": "8744e060-f0e5-43d6-92e0-3de9e8028788",
+    "name": "false",
+    "commands": [{
+      "id": "643707e7-183f-40f1-9a90-14e28e8dc4fd",
+      "comment": "",
+      "command": "open",
+      "target": "/map",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f37d9759-5595-4c12-b18c-41df65fa4a49",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "87385200-8bc5-488b-bb8d-642963bb52d8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pickup-button",
+      "targets": [
+        ["css=.pickup-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Pick-up point')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d2a3d89-36dd-4e6f-876f-2c1344fdbf83",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "กรุณาเลือกจุดเริ่มต้นก่อน",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5f1e7995-5e15-4a15-a051-498b3bf98f74",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8744e060-f0e5-43d6-92e0-3de9e8028788"]
+  }],
+  "urls": ["http://localhost:5173/"],
+  "plugins": []
+}

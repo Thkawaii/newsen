@@ -1,0 +1,46 @@
+.driverbooking {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  color: #000;
+}
+
+.driverbooking .connected {
+  color: green;
+}
+
+.driverbooking .disconnected {
+  color: red;
+}
+
+.driverbooking .bookingCard {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.driverbooking .acceptButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.driverbooking .chatButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}

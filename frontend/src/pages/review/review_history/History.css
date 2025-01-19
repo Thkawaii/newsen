@@ -1,0 +1,359 @@
+/* Global Styling */
+.gg {
+  margin: 0;
+  font-family: "Comic Sans MS", sans-serif; /* Font family */
+  color: #000000; /* Neutral text color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full height for the viewport */
+  width: 100vw; /* Full width for the viewport */
+  position: relative; /* Ensure layering for the video */
+  overflow: hidden; /* Prevent content overflow */
+  text-align: center; /* Center text alignment */
+  z-index: 1; /* Ensure content stays above the video */
+  background: linear-gradient(135deg, #cfe8f8, #d5c6f8);
+}
+
+/* Review History Container */
+.review-history-container {
+  width: 90vw; /* Adaptive width */
+  max-width: 1200px; /* Maximum width for larger screens */
+  text-align: center;
+  overflow-y: auto; /* Enable vertical scrolling for overflow content */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  margin: 20px auto; /* Center container */
+  display: flex;
+  flex-direction: column; /* Arrange content vertically */
+  gap: 20px; /* Space between sections */
+  box-sizing: border-box; /* Include padding in width/height */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Scrollbar Customization */
+.review-history-container::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.review-history-container::-webkit-scrollbar-thumb {
+  background: #6a63ff; /* Scrollbar thumb color */
+  border-radius: 8px; /* Rounded edges */
+}
+
+.review-history-container::-webkit-scrollbar-thumb:hover {
+  background: #5843d8; /* Darker thumb color on hover */
+}
+
+.review-history-container::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Track background color */
+  border-radius: 8px; /* Match thumb radius */
+}
+
+/* Firefox Scrollbar Styles */
+.review-history-container {
+  scrollbar-width: thin; /* Make the scrollbar thinner */
+  scrollbar-color: #6a63ff #f0f0f0; /* Thumb and track colors */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .review-history-container {
+    width: 95vw; /* Increase width for smaller screens */
+    padding: 20px; /* Reduce padding */
+    border-radius: 15px; /* Adjust border radius */
+  }
+}
+
+/* Header */
+.review-header {
+  margin-bottom: 20px;
+}
+
+.review-header h1 {
+  font-size: clamp(3rem, 7vw, 7rem); /* Scales with screen width */
+  color: #8f7ceb;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.step-indicatorss {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.step {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #d4d4d4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step.completed {
+  background: #6a63ff;
+}
+
+.step.active {
+  background: #8e82ff;
+  box-shadow: 0 0 10px rgba(106, 99, 255, 0.8);
+}
+/* Review History */
+.review-history-content {
+  margin-top: 20px;
+}
+
+/* Review History Title Styling */
+.lol {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #c3d8ff, #e4cbff);
+  border-radius: 12px; /* Rounded corners */
+  padding: 10px 20px;
+  display: inline-block;
+  font-family: "Comic Sans MS", sans-serif; /* Font family */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center;
+}
+.h2 {
+  font-family: "Comic Sans MS", sans-serif; /* Font family */
+}
+
+/* Table Styling */
+.review-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: "Comic Sans MS", sans-serif; /* Font family */
+  border-radius: 12px; /* Rounded corners for the entire table */
+  overflow: hidden; /* Ensures rounded corners apply to the table content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for the table */
+}
+
+.review-table th,
+.review-table td {
+  text-align: center;
+  padding: 12px 15px; /* Slightly larger padding for better spacing */
+  border: 1px solid #e0e0e0;
+  font-family: "Comic Sans MS", sans-serif; /* Font family */
+}
+
+.review-table th {
+  background: linear-gradient(135deg, #e3f2ff, #f3e9ff);
+  color: #6a63ff;
+  font-weight: 700;
+  text-transform: uppercase; /* Optional: for a more formal look */
+  font-family: "Comic Sans MS", sans-serif; /* Font family */
+}
+
+.review-table td {
+  color: #000000;
+}
+
+.review-table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.review-table tr:nth-child(even) {
+  background-color: #f3f3f3; /* Lighter shade for even rows */
+}
+
+.review-table tr:hover {
+  background-color: #e3f2ff; /* Highlight row on hover */
+  color: #6a63ff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .review-table {
+    font-size: 0.9rem; /* Slightly smaller text on small screens */
+  }
+
+  .review-history-title {
+    font-size: 1.5rem; /* Adjust title size for better fit */
+  }
+}
+
+/* Features Badge */
+.feature-badge {
+  display: inline-block;
+  margin: 2px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6a63ff, #8e82ff);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(106, 99, 255, 0.4);
+}
+
+/* Button Container */
+.button-container {
+  margin-top: 20px;
+}
+
+/* Back Button Styling */
+.secondary-btn.back-btn {
+  background: linear-gradient(
+    135deg,
+    #6a63ff,
+    #8e82ff
+  ); /* Match primary button gradient */
+  color: #ffffff; /* White text */
+  border: none; /* No border */
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(106, 99, 255, 0.3); /* Slight purple shadow */
+}
+
+.secondary-btn.back-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #5843d8,
+    #7c74e8
+  ); /* Match primary button hover gradient */
+  transform: scale(1.1); /* Slight scale effect */
+  box-shadow: 0 6px 15px rgba(106, 99, 255, 0.5); /* Enhanced shadow */
+}
+
+/* Edit and Delete Buttons */
+.ii,
+.oo {
+  padding: 15px;
+  width: 120px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.9rem; /* Slightly increased font size for readability */
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(106, 99, 255, 0.3);
+  font-family: "Comic Sans MS", sans-serif; /* Font family */
+}
+
+/* Edit Button */
+.ii {
+  background: linear-gradient(
+    135deg,
+    #6a63ff,
+    #8e82ff
+  ); /* Match primary button gradient */
+  color: white;
+}
+
+.ii:hover {
+  background: linear-gradient(
+    135deg,
+    #5843d8,
+    #7c74e8
+  ); /* Match primary button hover gradient */
+  box-shadow: 0 6px 10px rgba(106, 99, 255, 0.4); /* Enhanced shadow */
+  transform: translateY(-2px); /* Lift effect */
+}
+
+.ii:active {
+  background: #5843d8; /* Solid purple for pressed state */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Compressed shadow */
+  transform: translateY(1px); /* Lower on press */
+}
+
+/* Delete Button */
+.oo {
+  background: linear-gradient(
+    135deg,
+    #6a63ff,
+    #8e82ff
+  ); /* Match primary button gradient */
+  color: white;
+}
+
+.oo:hover {
+  background: linear-gradient(
+    135deg,
+    #5843d8,
+    #7c74e8
+  ); /* Match primary button hover gradient */
+  box-shadow: 0 6px 10px rgba(106, 99, 255, 0.4); /* Enhanced shadow */
+  transform: translateY(-2px); /* Lift effect */
+}
+
+.oo:active {
+  background: #5843d8; /* Solid purple for pressed state */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Compressed shadow */
+  transform: translateY(1px); /* Lower on press */
+}
+/* Modal Container */
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure modal is above other elements */
+}
+
+/* Modal Content Box */
+.edit-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Modal Header */
+.edit-modal-content h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input Fields */
+.edit-modal-content input[type="text"],
+.edit-modal-content input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 8px 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Modal Actions */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+/* Back to Home Button Styles */
+.back-to-home-button {
+  background: linear-gradient(135deg, #6a63ff, #8e82ff); /* Purple gradient */
+  color: #fff; /* White text */
+  border: none; /* Remove default border */
+  padding: 10px 20px; /* Adjust padding for better size */
+  border-radius: 8px; /* Rounded corners */
+  font-family: "Comic Sans MS", sans-serif; /* Font family */
+  font-size: 16px; /* Adjust font size */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: all 0.3s ease; /* Smooth transitions */
+  box-shadow: 0px 4px 6px rgba(143, 124, 235, 0.5); /* Soft shadow */
+}
+
+.back-to-home-button:hover {
+  background: linear-gradient(135deg, #5843d8, #7c74e8); /* Darker gradient on hover */
+  transform: scale(1.05); /* Slight enlargement */
+  box-shadow: 0px 6px 10px rgba(143, 124, 235, 0.7); /* Enhanced shadow */
+}
+
